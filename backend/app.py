@@ -1,3 +1,7 @@
+
+# cd backend/
+#pipenv shell 
+
 from flask import Flask, jsonify
 from flask_cors import CORS
 from src.routes.product_routes import product_bp
