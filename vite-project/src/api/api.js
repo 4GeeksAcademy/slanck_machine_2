@@ -20,15 +20,15 @@ const products = [
         "quantity": 10
     },
     {
-    "name": "Oreo Original",
-    "price": 0.42,
-    "quantity": 20
-  },
-  {
-    "name": "Mini Oreo",
-    "price": 0.54,
-    "quantity": 20
-  }
+        "name": "Oreo Original",
+        "price": 0.42,
+        "quantity": 20
+    },
+    {
+        "name": "Mini Oreo",
+        "price": 0.54,
+        "quantity": 20
+    }
 ]
 
 export const getProducts = async () => {
@@ -37,17 +37,18 @@ export const getProducts = async () => {
     return data
 }
 
-export const initialProducts =async ()=> {
+export const initialProducts = async () => {
     try {
         await Promise.all(
             products.map(p => {
                 fetch("https://verbose-broccoli-4j64gpqwpp4xhj7g7-5000.app.github.dev/products/", {
                     method: "POST",
-                    headers: { 
+                    headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(p)
-                })}
+                })
+            }
             )
         )
     } catch (error) {
