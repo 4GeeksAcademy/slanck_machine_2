@@ -26,8 +26,9 @@ def post_product():
     if not "name" in data or not "quantity" in data or not "price" in data:
         return jsonify("faltan campos por rellenar"), 400
     product= manager.create_product(data["name"], data["quantity"],data["price"])
-
-    return jsonify(product.serializer()),201
+    if product:
+        return jsonify(product.serializer()),201
+    return jsonify("No se puede retornar"),404
 
 @product_bp.route("/<int:id>", methods= ["PATCH"])
 def update(id):

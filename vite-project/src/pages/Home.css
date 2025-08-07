@@ -1,0 +1,14 @@
+.llamativo {
+  background-color: #ff5722;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.llamativo:hover {
+  background-color: #e64a19;
+}

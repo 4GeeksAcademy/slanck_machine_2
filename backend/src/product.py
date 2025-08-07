@@ -26,15 +26,20 @@ class ManagerProduct:
     
     def create_product(self,name,quantity,price):
         new_product = Product(name,price, quantity,self._next_id)
-        self._products.append(new_product)
-        self._next_id += 1
-        return new_product
+        if new_product:
+            for product in self._products:
+                if new_product.name == product.name:
+                    return None
+            self._products.append(new_product)
+            self._next_id += 1
+            return new_product
     
     def get_product_by_id(self,id):
         for product in self._products:
             if product["id"]== id:
                 return product
         return None
+    
     def delete_product(self,id):
         product =self.get_product_by_id(id)
         if product:
