@@ -1,37 +1,38 @@
 import { useEffect, useState } from 'react'
 import './VendingMachine.css'
 import Card from '../componentes/Card'
+import { getProducts, initialProducts } from '../api/api';
+import { data } from 'react-router';
 
 
 function VendingMachine() {
     
     const [products, setProducts] = useState([]);
 
-    const getApi = async () => {
-        const response = await fetch("https://verbose-broccoli-4j64gpqwpp4xhj7g7-5000.app.github.dev/products/")
+    // const getApi = async () => {
+    //     const response = await fetch("https://verbose-broccoli-4j64gpqwpp4xhj7g7-5000.app.github.dev/products/")
 
-        const data = await response.json()
-        console.log(data);
+    //     const data = await response.json()
+    //     console.log(data);
 
-    }
-    const post_product = async () => {
-        const response = await fetch("https://verbose-broccoli-4j64gpqwpp4xhj7g7-5000.app.github.dev/products/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify()
-        })
+    // }
+    // const post_product = async () => {
+    //     const response = await fetch("https://verbose-broccoli-4j64gpqwpp4xhj7g7-5000.app.github.dev/products/", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify()
+    //     })
+    // }
+
+    const showProducts =async ()=>{
+        const  data= await getProducts()
+        return setProducts(data)
     }
 
     useEffect(() => {
-        getApi()
+        showProducts()
+        initialProducts()
     }, [])
-
-
-
-
-
-
-
 
 
     return (

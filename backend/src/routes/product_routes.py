@@ -5,8 +5,6 @@ product_bp = Blueprint('products',__name__, url_prefix = "/products")
 
 manager= ManagerProduct()
 
-manager.create_product("coca cola",500, 23.99)
-manager.create_product("Patatas fritas",5, 75)
 
 @product_bp.route("/", methods= ["GET"])
 def get_products():
